@@ -16,20 +16,21 @@ sub new {
 sub Require::Hook::DzilBuild::INC {
     my ($self, $filename) = @_;
 
-    my @files = grep { $_->name eq "lib/$name" } @{ $self->{zilla}->files };
-    @files    = grep { $_->name eq $name }       @{ $self->{zilla}->files }
+    my @files = grep { $_->name eq "lib/$filename" } @{ $self->{zilla}->files };
+    @files    = grep { $_->name eq $filename }       @{ $self->{zilla}->files }
         unless @files;
     @files or do {
-        die "Can't find $name in lib/ or ./ in build files" if $self->{die};
+        die "Can't locate $filename in lib/ or ./ in build files" if $self->{die};
         return undef;
     };
 
     \($files[0]->encoded_content);
 }
 
-no Moose::Role;
 1;
 # ABSTRACT: Load module source code from Dist::Zilla build files
+
+=for Pod::Coverage .+
 
 =head1 SYNOPSIS
 
