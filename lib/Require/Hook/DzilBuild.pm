@@ -21,6 +21,7 @@ sub Require::Hook::DzilBuild::INC {
         unless @files;
     @files or do {
         die "Can't locate $filename in lib/ or ./ in build files" if $self->{die};
+        print STDERR "DEBUG: Can't locate $filename in lib/ or ./ in build files\n" if $self->{debug};
         return undef;
     };
 
@@ -67,6 +68,10 @@ Constructor. Known arguments:
 If set to 1, will die if filename to be C<require()>-d does not exist in build
 files. Otherwise if set to false (the default) will simply decline if file is
 not found in build files.
+
+=item * debug => bool
+
+If set to 1, will print more debug stuffs to STDERR.
 
 =back
 
