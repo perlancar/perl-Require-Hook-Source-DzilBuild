@@ -25,6 +25,7 @@ sub Require::Hook::DzilBuild::INC {
         return undef;
     };
 
+    print STDERR "DEBUG: Loading $filename from Dist::Zilla build files\n" if $self->{debug};
     \($files[0]->encoded_content);
 }
 
