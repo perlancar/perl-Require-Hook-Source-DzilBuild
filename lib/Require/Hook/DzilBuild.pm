@@ -16,16 +16,18 @@ sub new {
 sub Require::Hook::DzilBuild::INC {
     my ($self, $filename) = @_;
 
+    print STDERR __PACKAGE__ . ": entering handler\n" if $self->{debug};
+
     my @files = grep { $_->name eq "lib/$filename" } @{ $self->{zilla}->files };
     @files    = grep { $_->name eq $filename }       @{ $self->{zilla}->files }
         unless @files;
     @files or do {
         die "Can't locate $filename in lib/ or ./ in build files" if $self->{die};
-        print STDERR "DEBUG: Can't locate $filename in lib/ or ./ in build files\n" if $self->{debug};
+        print STDERR __PACKAGE__ . ": declined handling require($filename): Can't locate $filename in lib/ or ./ in Dist::Zilla build files\n" if $self->{debug};
         return undef;
     };
 
-    print STDERR "DEBUG: Loading $filename from Dist::Zilla build files\n" if $self->{debug};
+    print STDERR __PACKAGE__ . ": require($filename) from Dist::Zilla build file\n" if $self->{debug};
     \($files[0]->encoded_content);
 }
 
