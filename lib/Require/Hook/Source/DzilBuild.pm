@@ -1,6 +1,8 @@
-package Require::Hook::DzilBuild;
+package Require::Hook::Source::DzilBuild;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010001;
@@ -13,7 +15,7 @@ sub new {
     bless \%args, $class;
 }
 
-sub Require::Hook::DzilBuild::INC {
+sub Require::Hook::Source::DzilBuild::INC {
     my ($self, $filename) = @_;
 
     print STDERR __PACKAGE__ . ": entering handler\n" if $self->{debug};
@@ -43,7 +45,7 @@ In your L<Dist::Zilla> plugin, e.g. in C<munge_files()>:
  sub munge_files {
      my $self = shift;
 
-     local @INC = (Require::Hook::DzilBuild->new(zilla => $self->zilla), @INC);
+     local @INC = (Require::Hook::Source::DzilBuild->new(zilla => $self->zilla), @INC);
      require Foo::Bar; # will be searched from build files, if exist
 
      ...
