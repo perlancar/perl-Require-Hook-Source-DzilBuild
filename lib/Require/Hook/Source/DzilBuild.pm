@@ -1,13 +1,13 @@
 package Require::Hook::Source::DzilBuild;
 
+use 5.010001;
+use strict;
+use warnings;
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use 5.010001;
-use strict;
-use warnings;
 
 sub new {
     my ($class, %args) = @_;
@@ -18,7 +18,7 @@ sub new {
 sub Require::Hook::Source::DzilBuild::INC {
     my ($self, $filename) = @_;
 
-    print STDERR __PACKAGE__ . ": entering handler\n" if $self->{debug};
+    print STDERR __PACKAGE__ . ": entering handler for require($filename)\n" if $self->{debug};
 
     my @files = grep { $_->name eq "lib/$filename" } @{ $self->{zilla}->files };
     @files    = grep { $_->name eq $filename }       @{ $self->{zilla}->files }
