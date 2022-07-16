@@ -26,7 +26,7 @@ sub Require::Hook::Source::DzilBuild::INC {
     @files or do {
         die "Can't locate $filename in lib/ or ./ in build files" if $self->{die};
         print STDERR __PACKAGE__ . ": declined handling require($filename): Can't locate $filename in lib/ or ./ in Dist::Zilla build files\n" if $self->{debug};
-        return undef;
+        return;
     };
 
     print STDERR __PACKAGE__ . ": require($filename) from Dist::Zilla build file\n" if $self->{debug};
