@@ -84,5 +84,5 @@ If set to 1, will print more debug stuffs to STDERR.
 
 L<Dist::Zilla::Role::RequireFromBuild>
 
-L<Require::HookChain::source::dzilbuild> is a L<Require::HookChain> version and
+L<Require::HookChain::source::dzil_build> is a L<Require::HookChain> version and
 it uses us.
