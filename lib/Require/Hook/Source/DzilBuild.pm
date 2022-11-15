@@ -1,6 +1,5 @@
 package Require::Hook::Source::DzilBuild;
 
-use 5.010001;
 use strict;
 use warnings;
 
@@ -84,3 +83,6 @@ If set to 1, will print more debug stuffs to STDERR.
 =head1 SEE ALSO
 
 L<Dist::Zilla::Role::RequireFromBuild>
+
+L<Require::HookChain::source::dzilbuild> is a L<Require::HookChain> version and
+it uses us.
