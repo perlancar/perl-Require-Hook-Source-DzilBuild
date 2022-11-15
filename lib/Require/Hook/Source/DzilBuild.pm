@@ -10,7 +10,7 @@ use warnings;
 
 sub new {
     my ($class, %args) = @_;
-    $args{zilla} or die "Plase supply zilla object";
+    $args{zilla} or die "Please supply zilla object";
     bless \%args, $class;
 }
 
